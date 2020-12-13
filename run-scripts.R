@@ -1,38 +1,25 @@
 # Enter all scripts that need to be run.
-
 # This could run in parallel with a markdown file, although in theory not.
 
-# Cycle through valid scripts in each valid folder.
+# Only extract files that start with a 2 digit number and end with .R
+run.pattern <- "[0-9]{2}.*\\.R\\b"
 
-my.files <- files.list("extract")
-
-for (source.file in my.files) {
-
-  source("source.file")
-
+source.files <- function (folder.name) {
+  my.files <- list.files(folder.name, run.pattern, full.names = TRUE)
+  if (length(my.files) > 0) {
+    source(my.files)
+  } else {
+    print("No files to source")
+  }
 }
 
-my.files <- files.list("transform")
+source("load.R")
 
-for (source.file in my.files) {
+source.files("extract")
+source.files("transform")
+source.files("analysis")
+source.files("load")
 
-  source("source.file")
-
-}
-
-my.files <- files.list("analysis")
-
-for (source.file in my.files) {
-
-  source("source.file")
-
-}
-
-my.files <- files.list("load")
-
-for (source.file in my.files) {
-
-  source("source.file")
-
-}
+rm(source.files)
+rm(run.pattern)
 

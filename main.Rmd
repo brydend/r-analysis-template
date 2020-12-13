@@ -1,1 +1,3 @@
 # This is the main rmarkdown file for the analysis.
+# Duplicate rmarkdown files are possible.
+# The rmarkdown files must take the reader through the entire process
