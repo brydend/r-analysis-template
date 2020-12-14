@@ -6,10 +6,9 @@ run.pattern <- "[0-9]{2}.*\\.R\\b"
 
 source.files <- function (folder.name) {
   my.files <- list.files(folder.name, run.pattern, full.names = TRUE)
-  if (length(my.files) > 0) {
-    source(my.files)
-  } else {
-    print("No files to source")
+  for (source.file in my.files) {
+    print(source.file)
+    source(source.file)
   }
 }
 
@@ -22,4 +21,3 @@ source.files("load")
 
 rm(source.files)
 rm(run.pattern)
-
