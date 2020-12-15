@@ -9,10 +9,14 @@ library(openxlsx)
 
 # Source our helpers
 my.files <- list.files("helpers", ".*\\.R\\b", full.names = TRUE)
-if (length(my.files) > 0) source(my.files)
+for (source.file in my.files) {
+  source(source.file)
+}
 rm(my.files)
 
 # Source any functions
 my.files <- list.files("functions", ".*\\.R\\b", full.names = TRUE)
-if (length(my.files) > 0) source(my.files)
+for (source.file in my.files) {
+  source(source.file)
+}
 rm(my.files)
