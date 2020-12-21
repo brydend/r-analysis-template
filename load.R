@@ -1,7 +1,7 @@
 # Load our core libraries
 library(tidyverse)
 library(ggplot2)
-library(lubricate)
+library(lubridate)
 library(openxlsx)
 
 # Load additional project specific libraries
